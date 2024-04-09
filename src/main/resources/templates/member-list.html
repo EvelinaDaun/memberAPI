@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Member Listing </title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+
+<h1> Member List </h1>
+
+<div class="list">
+    <div th:each="member : ${members}" class="member">
+        <h3 th:text="${'Member: ' + member.getFirstName() + ' ' + member.getLastName()}"></h3>
+
+        <p th:text="${'Date of birth: ' + member.getDateOfBirth()}"></p>
+        <p th:text="${'Address: ' + member.getAddress().getStreet() + ', ' + member.getAddress.getPostalCode() + ' ' + member.getAddress().getCity()}"></p>
+        <p th:text="${'Email: ' + member.getEmail()}"></p>
+        <p th:text="${'Phone: ' + member.getPhone()}"></p>
+
+        <a th:href="@{deletemember/{memberId}(memberId=${member.getId()})}">
+            <button> Delete Member </button>
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>
